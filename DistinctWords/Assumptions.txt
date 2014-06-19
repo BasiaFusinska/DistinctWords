@@ -1,0 +1,9 @@
+﻿1. Reading line from a file may be done async. But it wouldn't bring any value to the solution, because code would still wait 
+for the method to run and return value.
+
+2. Dependent on the definition of word "word", regular expression used in the code would be different.
+Now there's just use one that checks out for [A-Za-z0-9_] and ignores other characters.
+It won't for example recognize word splited between lines, just will treat those as two separates.
+
+3. Code is not written OO way. Functionalities are not extracted to separate classes, just written as methods in Program.cs file.
+This is because I assumed the task concerns algorithmic part of the problem, not desing.
