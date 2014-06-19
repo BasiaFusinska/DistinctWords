@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using DistinctWordsBL;
 
 namespace DistinctWords
 {
@@ -13,56 +14,21 @@ namespace DistinctWords
             if (args.Length == 0)
                 throw new ArgumentException("Wrong arguments amount", "args");
 
-            var fileName = args[0];
+            var wordsCounter = new WordsCounter();
+            var wordsMap = wordsCounter.CountDistinctWordsInFile(args[0]);
 
-            if (!File.Exists(fileName))
-                throw new FileNotFoundException("File doesn't exist", fileName);
-
-            var words = CountDistinctWordsInFile(fileName);
-            foreach (var word in words.Keys)
-            {
-                Console.WriteLine("{0}: {1}", word, words[word]);
-            }
-
+            DisplayWordsMap(wordsMap);
+            
             Console.ReadLine();
         }
 
-        private static IDictionary<string, int> CountDistinctWordsInFile(string fileName)
+        private static void DisplayWordsMap(WordsMap wordsMap)
         {
-            var wordsCount = new Dictionary<string, int>();
-
-            using (var reader = File.OpenText(fileName))
+            foreach (var word in wordsMap)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var words = SplitLine(line);
-                    FillWordsMap(words, wordsCount);
-                }
+                Console.WriteLine("{0}: {1}", word, wordsMap[word]);
             }
-
-            return wordsCount;
-        }
-
-        private static IEnumerable<string> SplitLine(string line)
-        {
-            var pattern = new Regex(@"\w+", RegexOptions.IgnorePatternWhitespace);
-
-            return (from Match m in pattern.Matches(line) select m.Groups[0].Value).ToList();
-        }
-        private static void FillWordsMap(IEnumerable<string> words, IDictionary<string, int> wordsMap)
-        {
-            foreach (var word in words.Select(w => w.ToUpperInvariant()))
-            {
-                if (wordsMap.ContainsKey(word))
-                {
-                    wordsMap[word]++;
-                }
-                else
-                {
-                    wordsMap.Add(word, 1);
-                }
-            }
+            
         }
     }
 }
