@@ -25,7 +25,7 @@ namespace DistinctWordsBL
 
         public int this[string word]
         {
-            get { return _wordsMap[word]; }
+            get { return _wordsMap[word.ToUpperInvariant()]; }
         }
 
         public IEnumerator<string> GetEnumerator()

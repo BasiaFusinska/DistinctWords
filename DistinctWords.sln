@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistinctWords", "DistinctWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistinctWordsBL", "DistinctWordsBL\DistinctWordsBL.csproj", "{4FB02CCE-5FF6-4341-B107-27F0EE6E07B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistinctWordsTests", "DistinctWordsTests\DistinctWordsTests.csproj", "{6AB6EA79-55AA-4CF6-9D29-C345CE759CE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4FB02CCE-5FF6-4341-B107-27F0EE6E07B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FB02CCE-5FF6-4341-B107-27F0EE6E07B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB02CCE-5FF6-4341-B107-27F0EE6E07B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB6EA79-55AA-4CF6-9D29-C345CE759CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB6EA79-55AA-4CF6-9D29-C345CE759CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB6EA79-55AA-4CF6-9D29-C345CE759CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB6EA79-55AA-4CF6-9D29-C345CE759CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
