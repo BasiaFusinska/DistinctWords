@@ -1,35 +1,24 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.IO;
 
 namespace DistinctWordsBL
 {
     public class WordsCounter
     {
+        private readonly WordsReader _wordsReader;
         private readonly WordsMap _wordsMap = new WordsMap();
+
+        public WordsCounter(WordsReader wordsReader)
+        {
+            _wordsReader = wordsReader;
+        }
 
         public WordsMap CountDistinctWordsInFile(string fileName)
         {
             using (var reader = File.OpenText(fileName))
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var words = SplitLine(line);
-                    _wordsMap.FillWithWords(words);
-                }
+                _wordsMap.FillWithWords(_wordsReader.ReadWords(reader));
             }
-
             return _wordsMap;
-        }
-
-        private static IEnumerable<string> SplitLine(string line)
-        {
-            return (from Match m 
-                    in Regex.Matches(line, @"\w+", RegexOptions.IgnorePatternWhitespace) 
-                    select m.Groups[0].Value)
-                    .ToList();
         }
     }
 }
