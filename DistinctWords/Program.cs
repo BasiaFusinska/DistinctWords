@@ -14,7 +14,7 @@ namespace DistinctWords
             if (args.Length == 0)
                 throw new ArgumentException("Wrong arguments amount", "args");
 
-            var wordsCounter = new WordsCounter(new WordsReader());
+            var wordsCounter = new WordsCounter(new WordsReader(new WordsParser()));
             var wordsMap = wordsCounter.CountDistinctWordsInFile(args[0]);
 
             DisplayWordsMap(wordsMap);
