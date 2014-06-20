@@ -4,10 +4,10 @@ namespace DistinctWordsBL
 {
     public class WordsCounter
     {
-        private readonly WordsReader _wordsReader;
+        private readonly IWordsReader _wordsReader;
         private readonly WordsMap _wordsMap = new WordsMap();
 
-        public WordsCounter(WordsReader wordsReader)
+        public WordsCounter(IWordsReader wordsReader)
         {
             _wordsReader = wordsReader;
         }

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace DistinctWordsBL
 {
-    public class WordsReader
+    public class WordsReader : IWordsReader
     {
         public IEnumerable<string> ReadWords(StreamReader reader)
         {
