@@ -13,11 +13,17 @@ namespace DistinctWordsBL
         }
         public IEnumerable<string> ReadWordsFromFile(string fileName)
         {
-            using (var reader = File.OpenText(fileName))
+            using (var fs = File.Open(fileName, FileMode.Open, FileAccess.Read))
             {
-                foreach (var word in _wordsReader.ReadWords(reader))
+                using (var bs = new BufferedStream(fs))
                 {
-                    yield return word;
+                    using (var reader = new StreamReader(bs))
+                    {
+                        foreach (var word in _wordsReader.ReadWords(reader))
+                        {
+                            yield return word;
+                        }
+                    }
                 }
             }
         }
