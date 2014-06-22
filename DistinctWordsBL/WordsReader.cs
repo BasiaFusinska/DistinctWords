@@ -5,9 +5,9 @@ namespace DistinctWordsBL
 {
     public class WordsReader : IWordsReader
     {
-        private readonly WordsParser _parser;
+        private readonly IWordsParser _parser;
 
-        public WordsReader(WordsParser parser)
+        public WordsReader(IWordsParser parser)
         {
             _parser = parser;
         }
