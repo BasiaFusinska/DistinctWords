@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 using DistinctWordsBL;
 
 namespace DistinctWords
@@ -14,7 +10,7 @@ namespace DistinctWords
             if (args.Length == 0)
                 throw new ArgumentException("Wrong arguments amount", "args");
 
-            var wordsCounter = new WordsCounter(new WordsReader(new WordsParser()));
+            var wordsCounter = new WordsCounter(new FileWordsReader(new LinesReader(new WordsParser())));
             var wordsMap = wordsCounter.CountDistinctWordsInFile(args[0]);
 
             DisplayWordsMap(wordsMap);

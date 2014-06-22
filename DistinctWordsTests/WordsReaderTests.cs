@@ -35,7 +35,7 @@ namespace DistinctWordsTests
             var parserMock = new Mock<IWordsParser>();
             parserMock.Setup(p => p.ReadWords(It.IsAny<string>())).Returns(new[] { Word1, Word2 });
 
-            var wordsReader = new WordsReader(parserMock.Object);
+            var wordsReader = new LinesReader(parserMock.Object);
 
             var index = 0;
             using (var reader = PrepareStream())

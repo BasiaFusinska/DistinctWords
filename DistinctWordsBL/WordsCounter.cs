@@ -1,23 +1,18 @@
-﻿using System.IO;
-
-namespace DistinctWordsBL
+﻿namespace DistinctWordsBL
 {
     public class WordsCounter
     {
-        private readonly IWordsReader _wordsReader;
+        private readonly IFileWordsReader _fileWordsReader;
         private readonly WordsMap _wordsMap = new WordsMap();
 
-        public WordsCounter(IWordsReader wordsReader)
+        public WordsCounter(IFileWordsReader fileWordsReader)
         {
-            _wordsReader = wordsReader;
+            _fileWordsReader = fileWordsReader;
         }
 
         public WordsMap CountDistinctWordsInFile(string fileName)
         {
-            using (var reader = File.OpenText(fileName))
-            {
-                _wordsMap.FillWithWords(_wordsReader.ReadWords(reader));
-            }
+            _wordsMap.FillWithWords(_fileWordsReader.ReadWordsFromFile(fileName));
             return _wordsMap;
         }
     }
